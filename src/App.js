@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router,Routes,Route,} from "react-router-dom";
+import Homepage from "./Components/Homepage";
+import Header from "./Components/Header/Header";
+import AddQuestion from "./Components/AddQuestion/AddQuestion";
+//import ViewQuestion from "./Components";
+import ViewQuestion from './Components/Homepage';
+import Auth from "./Components/Auth";
+// import { useDispatch, useSelector } from "react-redux";
+// import { login, logout, selectUser } from "./feature/userSlice";
+// import { useEffect } from "react";
+// import { auth } from "./firebase"; Navigate,
 
 function App() {
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Header />
+        <Routes>
+          <Route  path="/auth" element={<Auth />} />
+          <Route  path="/" element={<Homepage />} />
+          <Route path="/add-question" element={<AddQuestion/>} />
+          <Route  path="/question" element={<ViewQuestion />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
